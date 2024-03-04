@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="x-icon" href="Vivamax LOGO.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Selection</title>
+    <style>
+        @font-face {
+            font-family: myFont;
+            src:url(HarabaraMais.otf);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: myFont;
+            background: url(Vivamax\ BG.jpg) no-repeat center/cover;
+            color: white;
+            filter: brightness(1.1) contrast(1.1) saturate(1.2) blur(0px) opacity(0.9);
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .radio-container, .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .radio-container input[type="radio"], .checkbox-container input[type="checkbox"] {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .radio-container label, .checkbox-container label {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.3s ease-in-out;
+            padding-left: 10px;
+        }
+
+        .radio-container:hover label, .checkbox-container:hover label {
+            transform: scale(1.1);
+        }
+
+        .radio-container:hover .artist-image {
+            opacity: 1;
+        }
+
+        .artist-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            position: absolute;
+            left: -120px;
+            top: 0;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #buttonsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #buttonsContainer button {
+            margin: 0 5px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: myFont;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #buttonsContainer button:hover {
+            transform: scale(1.1);
+        }
+
+        .checkbox-container label:hover {
+            transform: scale(1.1);
+        }
+
+        .checkbox-container label:hover::after {
+            content: attr(data-title);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 2;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Select a <span style="color: #0086c9;">Viva</span><span style="color: #f99201;">max</span> Female Artist:</p>
+        <div class="radio-container">
+            <img class="artist-image" src="Angeli Khang.png" alt="Angeli Khang Image">
+            <input type="radio" name="artist" value="Angeli Khang" id="angeli"><label for="angeli">Angeli Khang</label>
+        </div>
+
+        <div class="radio-container">
+            <img class="artist-image" src="Azi Acosta.png" alt="Azi Acota Image">
+            <input type="radio" name="artist" value="Azi Acosta" id="azi"><label for="azi">Azi Acosta</label>
+        </div>
+
+        <div class="radio-container">
+            <img class="artist-image" src="Robb Guinto.png" alt="Robb Guinto Image">
+            <input type="radio" name="artist" value="Robb Guinto" id="robb"><label for="robb">Robb Guinto</label>
+        </div>
+
+        <div class="radio-container">
+            <img class="artist-image" src="Aj Raval.png" alt="Aj Raval Image">
+            <input type="radio" name="artist" value="Aj Raval" id="aj"><label for="aj">Aj Raval</label>
+        </div>
+
+        <div class="radio-container">
+            <img class="artist-image" src="Denise Esteban.png" alt="Denise Esteban Image">
+            <input type="radio" name="artist" value="Denise Esteban" id="denise"><label for="denise">Denise Esteban</label>
+        </div>
+
+        <div class="radio-container">
+            <img class="artist-image" src="Rose Van Ginkel.png" alt="Rose Van Ginkel Image">
+            <input type="radio" name="artist" value="Rose Van Ginkel" id="rose"><label for="rose">Rose Van Ginkel</label>
+        </div>
+<hr>
+        <p>Select a <span style="color: #0086c9;">Gen</span><span style="color: #f99201;">re</span>:</p>
+        <label for="c1" data-title="Action"> 
+            <input type="checkbox" name="genre" value="Action" id="c1">Action
+        </label>
+        <label for="c2" data-title="Comedy">  
+            <input type="checkbox" name="genre" value="Comedy" id="c2">Comedy
+        </label>
+        <label for="c3" data-title="Drama"> 
+            <input type="checkbox" name="genre" value="Drama" id="c3">Drama
+        </label>
+
+        <div id="buttonsContainer">
+            <p><button id="clearBtn"><span style="color: #0086c9;">Cle</span><span style="color: #f99201;">ar</span></button></p>
+
+            <p><button id="submitBtn"><span style="color: #0086c9;">Sub</span><span style="color: #f99201;">mit</span></button></p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.body.style.zoom = "200%"; 
+        };
+
+        const submitBtn = document.querySelector('#submitBtn');
+        const clearBtn = document.querySelector('#clearBtn');
+
+        submitBtn.addEventListener('click', function() {
+            let selectedSize;
+            const radioButtons = document.querySelectorAll('input[name="artist"]');
+            for (let i = 0; i < radioButtons.length; i++) {
+                if (radioButtons[i].checked) {
+                    selectedSize = radioButtons[i].value;
+                    break;
+                }
+            }
+
+            let selectedColors = [];
+            const checkboxes = document.querySelectorAll('input[name="genre"]:checked');
+            for (let i = 0; i < checkboxes.length; i++) {
+                selectedColors.push(checkboxes[i].value);
+            }
+
+            let message = '';
+            if (selectedSize) {
+                message += 'Artist: ' + selectedSize + '\n';
+            } else {
+                message += 'You haven\'t Selected any Artist.\n';
+            }
+
+            if (selectedColors.length > 0) {
+                message += 'Genre/(s): ' + selectedColors.join(', ');
+            } else {
+                message += 'You haven\'t Selected any Genre/(s).';
+            }
+
+            alert(message);
+        });
+
+        clearBtn.addEventListener('click', function() {
+            const radioButtons = document.querySelectorAll('input[name="artist"]');
+            radioButtons.forEach(button => button.checked = false);
+
+            const checkboxes = document.querySelectorAll('input[name="genre"]:checked');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+        });
+    </script>
+</body>
+</html>
